@@ -37,6 +37,8 @@ class LDAP_Gateway
      */
     public static function login ($userid, $password)
     {
+		# $userid = ldapspecialchars($userid);
+		# $password = ldapspecialchars($password);
         // Loads the LDAP Api.
         $ldap_api = new LDAP_Api(LDAP_BASEDN, LDAP_IDFIELD, 
         self::$LDAP_FIELDS);

@@ -6,13 +6,8 @@ include 'includes/user.php';
 
 $user = new User();
 
-if ($user->user_is_logged_in){
-	print ('NIA: '.$user->user_nia);
-	print ('EMAIL: '.$user->user_email);
-	print ('NAME: '.$user->user_name);
-}
+include 'tmpl/head.php';
+include 'tmpl/bootinfo.php';
+include 'tmpl/footer.php';
 
-else {
-	print ($user->error);
-}
 ?>

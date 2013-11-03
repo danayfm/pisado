@@ -1,7 +1,7 @@
 <?php
 	/**
 	 * user.php
-	 * @version 0.1
+	 * @version 0.2
 	 * @author Yago Pérez Sáiz <yaperezs@gmail.com>
 	 * para Delegación de Estudiantes - Universidad Carlos III de Madrid.
 	 * 
@@ -13,11 +13,12 @@
 	 	
 	class User {
 		
-		public $user_nia ;
-		public $user_name ;
-		public $user_email ;
+		public $user_nia;
+		public $user_name;
+		public $user_email;
+		public $user_domain;
 		public $user_is_logged_in = false;
-		public $error = "";
+		public $error;
 					
 		/* Start */
 		public function __construct() {
@@ -34,7 +35,7 @@
 			}
 			
 			/* Trying to login */
-			elseif (isset($_GET["login"])) {
+			elseif (isset($_POST["user_nia"])) {
 				$this->loginWithPostData($_POST['user_nia'], $_POST['user_password']);
 			}
 		}
@@ -42,6 +43,8 @@
 		private function loginWithSessionData() {
 			$this->user_nia = $_SESSION['user_nia'];
 			$this->user_email = $_SESSION['user_email'];
+			$this->user_name = $_SESSION['user_name'];
+			$this->user_domain = $_SESSION['user_domain'];
 			$this->user_is_logged_in = true;
 		}
 				
@@ -60,19 +63,32 @@
 					/* Username and password are correct */
 					$_SESSION['user_nia'] = $user->getUserId ();
 					$_SESSION['user_email'] = $user->getUserMail();
-					$_SESSION['user_name'] = $user->getUserNameFormatted();				
+					$_SESSION['user_name'] = $user->getUserNameFormatted();
+					$_SESSION['user_domain'] = $user->getDn();				
 					$_SESSION['user_logged_in'] = 1;
 					
-					var_dump($_SESSION);
 					$this->user_nia = $user->getUserId();
 					$this->user_name = $user->getUserNameFormatted();
 					$this->user_email = $user->getUserMail();
+					$this->user_domain = $user->getDn();	
 					$this->user_is_logged_in = true;
 				}
 				else {
-					$this->error = 'Falló el login!';
+					$this->error = 'Contraseña / NIA incorrecto';
 				}
 			}
+		}
+		
+		public function doLogout() {
+			$_SESSION = array();
+			session_destroy();
+			$this->user_is_logged_in = false;
+		}
+		
+		/* This is a exprerimental function */
+		public function getCourse() {
+			$titulacion = str_replace("ou=",'', explode(',', $this->user_domain)[1]);
+			return ucwords (strtolower($titulacion));
 		}
 	}
 ?>
