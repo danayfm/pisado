@@ -87,7 +87,8 @@
 		
 		/* This is a exprerimental function */
 		public function getCourse() {
-			$titulacion = str_replace("ou=",'', explode(',', $this->user_domain)[1]);
+			$ldap = explode(',', $this->user_domain);
+			$titulacion = str_replace("ou=",'',$ldap[1]);
 			return ucwords (strtolower($titulacion));
 		}
 	}
