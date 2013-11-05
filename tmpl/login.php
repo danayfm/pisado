@@ -40,7 +40,7 @@
 	<div class="container">
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6">
-            <div class="well well-sm">
+            <div class="well ">
                 <div class="row">
                     <div class="col-sm-6 col-md-4">
                         <img src="http://placehold.it/380x500" alt="" class="img-rounded img-responsive" />
