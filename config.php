@@ -16,4 +16,11 @@ define('LDAP_NAMEFIELD', 'cn');
 define('LDAP_MAILFIELD', 'mail');
 define('LDAP_MAILALIASFIELD', 'uc3mcorreoalias');
 date_default_timezone_set('Europe/Madrid');
+
+/* SQL Parameters */
+define('SQL_HOST', 'localhost');
+define('SQL_DB', 'pisado');
+define('SQL_PASSWD', 'pisado');
+define('SQL_USER', 'pisado');
+define('SQL_PORT', 3306);
 ?>

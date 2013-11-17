@@ -1,3 +1,11 @@
+-- phpMyAdmin SQL Dump
+-- version 3.4.10.1deb1
+-- http://www.phpmyadmin.net
+--
+-- Servidor: localhost
+-- Tiempo de generación: 16-11-2013 a las 20:47:03
+-- Versión del servidor: 5.5.34
+-- Versión de PHP: 5.3.10-1ubuntu3.8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -5,6 +13,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `pisado`
 --
+CREATE DATABASE `pisado` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `pisado`;
 
 -- --------------------------------------------------------
 
@@ -65,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `organo` (
 --
 
 CREATE TABLE IF NOT EXISTS `pisado` (
-  `id` int(10) NOT NULL DEFAULT '0',
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `email` varchar(30) DEFAULT NULL,
   `hash` varchar(30) NOT NULL,
   `texto` text NOT NULL,
