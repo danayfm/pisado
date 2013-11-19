@@ -1,16 +1,16 @@
 <?php
+    include_once 'includes/pisadoController.php';
+    include 'includes/user.php';
 
-    include 'includes/pisado.php';
-    include 'includes/mysql.php';
+    $user = new User();
+    $pisado = new pisadoCrontroller();
+    include 'tmpl/head.php';
 
-    $pisado = New Pisado();
-    $mysql = New Mysql();
-
-    $pisados = $mysql->listPisados();
-    foreach($pisados as  $pisado){
-        echo $pisado->getEmail();
-        $mysqld = new Mysql();
-        $mysqld->insertPisado($pisado);
+    if (isset($_POST['insertPisado']) ) {
+        $pisado->insertPisado();
+    } else {
+        include 'tmpl/newpisado.php';
     }
+    include 'tmpl/footer.php';
 
 ?>

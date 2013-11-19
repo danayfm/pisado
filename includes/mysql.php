@@ -21,19 +21,17 @@ class Mysql {
     }
 
     public function insertPisado (Pisado $pisado){
-        /*$stmt = $this->_mysqli->prepare("INSERT INTO pisado (email,hash,texto) VALUES (?,?,?)")
-        or die('There was a problem preparing statement');
-        $stmt->bind_param('sss', $pisado->getEmail(),$pisado->getHash(),$pisado->getTexto())
-        or die('There was a problem binding statement');
-        $stmt->execute()
-        or die('There was a problem executing statement'.$this->_mysqli->error);
-        $this->_mysqli->close();*/
         $email =  $pisado->getEmail();
         $hash = $pisado->getHash();
         $texto = $pisado->getTexto();
-        $query="INSERT INTO pisado (email,hash,texto) VALUES ('".$email."a','".$hash."b','".$texto."c')";
-        $this->_mysqli->query($query)
-        or die('There was a problem executing statement'.$this->_mysqli->error);
+
+        $stmt = $this->_mysqli->prepare("INSERT INTO pisado (email,hash,texto) VALUES (?,?,?)")
+        or die('There was a problem preparing statement');
+        $stmt->bind_param('sss', $email,$hash,$texto)
+        or die('There was a problem binding statement');
+        $stmt->execute()
+        or die('There was a problem executing statement');
+        $this->_mysqli->close();
 
     }
 
@@ -46,6 +44,8 @@ class Mysql {
             $pisados[]=$pisado;
            }
         $this->_mysqli->close();
-        return $pisados;
+        //if (defined('pisados'))
+        if (isset($pisados))
+            return $pisados;
     }
 } 
