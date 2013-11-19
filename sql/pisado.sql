@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `organo` (
 CREATE TABLE IF NOT EXISTS `pisado` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `email` varchar(30) DEFAULT NULL,
-  `hash` varchar(30) NOT NULL,
+  `hash` varchar(32) NOT NULL,
   `texto` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

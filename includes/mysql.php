@@ -6,6 +6,7 @@
  */
 
 require_once dirname(__FILE__) . '/../config.php';
+require_once './pisado.php';
 
 class Mysql {
 
@@ -35,7 +36,7 @@ class Mysql {
 
     }
 
-    public function listPisados($id = NULL) {
+    public function listPisados() {
         $result = $this->_mysqli->query("SELECT * FROM pisado")
         or die('There was a problem with DB');
 
@@ -47,5 +48,20 @@ class Mysql {
         //if (defined('pisados'))
         if (isset($pisados))
             return $pisados;
+    }
+
+    public function getPisado($hash) {
+        $stmt = $this->_mysqli->prepare("SELECT * FROM pisado WHERE hash = ?")
+        or die('There was a problem preparing statement');
+        $stmt->bind_param('s', $hash)
+        or die('There was a problem binding statement');
+        $stmt->execute();
+
+        $stmt->bind_result($id,$email,$hash,$texto);
+        if ($stmt->fetch()) {
+            $pisado = new Pisado($id, $hash, $email, $texto);
+            $this->_mysqli->close();
+            return $pisado;
+        } else die('ERROR 999: Juanker detected.');
     }
 } 

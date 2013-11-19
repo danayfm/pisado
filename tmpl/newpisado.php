@@ -3,7 +3,7 @@
       <div class="row">
           <?php if (!empty($pisado->error)) { ?>
               <div class="alert alert-dismissable alert-info">
-                  <?php echo $pisado->error ?>
+                  <?php echo $pisadoController->error ?>
                   <br></div>
           <?php } ?>
           <form accept-charset="UTF-8" role="form" method="post">

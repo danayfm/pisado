@@ -4,7 +4,8 @@
         <h1>Bienvenido a Pisado!<br></h1>
         <p>Parte Informativo Sobre Actividad DOcente</p>
         <p>
-          <button class="btn btn-primary btn-lg">Rellenar un pisado &raquo;</button></p>
+            <a class="btn-primary btn-lg" href="pisado.php">Rellenar un pisado &raquo;</a>
+          </p>
       </div>
     </div>
     <div class="container">

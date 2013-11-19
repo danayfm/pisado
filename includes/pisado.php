@@ -25,7 +25,7 @@
          */
         public function getEmail()
         {
-            return htmlspecialchars($this->email);
+            return nl2br(htmlspecialchars($this->email));
         }
 
         /**
@@ -49,7 +49,7 @@
          */
         public function setTexto($texto)
         {
-            $this->texto = $texto;
+            $this->texto = htmlspecialchars($texto);
         }
 
         /**

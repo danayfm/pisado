@@ -40,11 +40,11 @@
             </li>
             <?php if ($user->user_is_logged_in) { ?>
             <li>
-              <a href="#about">Listar</a>
+              <a href="pisado.php">Listar</a>
             </li>
             <?php } ?>
             <li>
-              <a href="#contact">Rellenar</a>
+              <a href="pisado.php">Rellenar</a>
             </li> 
           </ul>
           <ul class="nav navbar-nav navbar-right">
